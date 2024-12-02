@@ -1,11 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Focus Flow | Todo App</title>
 </head>
+
 <body>
-    
+    <aside>
+        <div class="logo">
+            <i class="material-icons">dashboard</i>
+            <h1>Focus Flow</h1>
+        </div>
+        
+
+        <nav>
+            <ul class="navigation">
+                <li><i class="material-icons">assignment</i>All Tasks</li>
+                <li><i class="material-icons">schedule</i>Today</li>
+                <li><i class="material-icons">event</i>Upcoming</li>
+            </ul>
+        </nav>
+
+        <div class="lists">
+            <div class="list-container">
+                <div class="list-title">
+                    <h3>Family</h3>
+                </div>
+
+                <ul>
+                    <li><i class="material-icons">incomplete_circle</i>Vacation</li>
+                    <li><i class="material-icons">incomplete_circle</i>Buy new car</li>
+                    <li><i class="material-icons">incomplete_circle</i>Christmas Party</li>
+                </ul>
+            </div>
+
+            <div class="list-container">
+                <div class="list-title">
+                    <h3>Work</h3>
+                </div>
+
+                <ul>
+                    <li><i class="material-icons">incomplete_circle</i>Presentation</li>
+                    <li><i class="material-icons">incomplete_circle</i>Meeting</li>
+                    <li><i class="material-icons">incomplete_circle</i>Training</li>
+                </ul>
+            </div>
+        </div>
+
+        <button id="add-list"><i class="material-icons">add</i>New List</button>
+    </aside>
+
+    <main id="container">
+
+    </main>
 </body>
+
 </html>
