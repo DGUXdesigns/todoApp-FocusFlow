@@ -40,8 +40,25 @@ export class TaskDisplay {
             description.innerText = `${task.description}`;
 
             // TODO: add checklist to Task Constructor;
-            // const checklistContainer = document.createElement('div');
-            // checklistContainer.classList.add('checklist');
+            // Render checklist
+            const checklistContainer = document.createElement('div');
+            checklistContainer.classList.add('checklist');
+            task.checklist.forEach((item, index) => {
+                const checklistItem = document.createElement('label');
+                checklistItem.classList.add('checklist-item');
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = item.completed;
+                checkbox.addEventListener('change', () => task.toggleChecklistItem(index));
+
+                const checklistlabel = document.createElement('span');
+                checklistlabel.innerText = item.description;
+
+                checklistItem.appendChild(checkbox);
+                checklistItem.appendChild(checklistLabel);
+                checklistContainer.appendChild(checklistItem);
+            })
 
             // Card Footer Info
             const cardFooter = document.createElement('card-footer');
@@ -77,8 +94,8 @@ export class TaskDisplay {
             const btnWrapper = document.createElement('div');
             btnWrapper.classList.add('btn-wrapper');
 
-            const listBtn = document.createElement('button');
-            listBtn.innerHTML = '<i class="material-icons">list</i>'
+            const addChecklistBtn = document.createElement('button');
+            addChecklistBtn.innerHTML = '<i class="material-icons">list</i>'
 
             const removeBtn = document.createElement('button');
             removeBtn.innerHTML = '<i class="material-icons">delete</i>';
@@ -99,7 +116,7 @@ export class TaskDisplay {
             cardFooter.appendChild(priorityWrapper);
             priorityWrapper.appendChild(priority);
             cardFooter.appendChild(btnWrapper);
-            btnWrapper.appendChild(listBtn);
+            btnWrapper.appendChild(addChecklistBtn);
             btnWrapper.appendChild(removeBtn);
             btnWrapper.appendChild(editBtn);
         });
