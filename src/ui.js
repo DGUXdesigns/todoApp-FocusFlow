@@ -50,10 +50,21 @@ export class TaskDisplay {
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 checkbox.checked = item.completed;
-                checkbox.addEventListener('change', () => task.toggleChecklistItem(index));
 
-                const checklistlabel = document.createElement('span');
-                checklistlabel.innerText = item.description;
+                const checklistLabel = document.createElement('span');
+                checklistLabel.innerText = item.description;
+
+                checkbox.addEventListener('change', () => {
+                    task.toggleChecklistItem(index);
+                    
+                    if (task.isTaskComplete(index)) {
+                        checklistLabel.style.textDecoration = 'line-through';
+                        checklistLabel.style.color = 'rgba(99, 94, 242, 0.5)';
+                    } else {
+                        checklistLabel.style.textDecoration = 'none';
+                        checklistLabel.style.color = 'white';
+                    }
+                });
 
                 checklistItem.appendChild(checkbox);
                 checklistItem.appendChild(checklistLabel);
@@ -112,6 +123,7 @@ export class TaskDisplay {
             headerContainer.appendChild(date);
             taskCard.appendChild(lineBreak);
             taskCard.appendChild(description);
+            taskCard.appendChild(checklistContainer);
             taskCard.appendChild(cardFooter);
             cardFooter.appendChild(priorityWrapper);
             priorityWrapper.appendChild(priority);
