@@ -1,14 +1,13 @@
 // Task Model
 export class Task {
-    // TODO: add checklist and tags
     constructor(title, description, date, priority, tag, checklist = []) {
         this.title = title;
         this.description = description;
         this.date = date;
         this.priority = priority;
         this.tag = tag;
-        this.checklist = checklist; //Array of checlist items
-        this.completed = false //TODO: implement toggle for completed tasks
+        this.checklist = checklist; // Array of checklist items
+        this.completed = false
     }
 
     isOverdue() {
@@ -22,8 +21,20 @@ export class Task {
         this.checklist.push(item);
     }
 
-    togglechecklistItem(index) {
+    toggleChecklistItem(index) {
         this.checklist[index].completed = !this.checklist[index].completed;
+    }
+
+    addChecklistItemToTask(taskIndex, checklistItem) {
+        this.tasks[taskIndex].addChecklistItem(checklistItem);
+    }
+
+    toggleChecklistItemInTask(taskIndex, checklistItemIndex) {
+        this.tasks[taskIndex].toggleChecklistItem(checklistItemIndex);
+    }
+
+    isTaskComplete(index) {
+        return this.checklist[index].completed;
     }
 }
 
